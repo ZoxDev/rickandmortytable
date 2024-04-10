@@ -1,5 +1,7 @@
+import { RickAndMortyView } from './views/RickAndMortyView';
+
 function App() {
-  return <h1>HI</h1>;
+  return <RickAndMortyView />;
 }
 
 export default App;
