@@ -8,12 +8,13 @@ export const RickAndMortyView = () => {
 
   if (datas.data === undefined) return <h1>Fetching datas...</h1>;
 
+  const handleChangePage = (newPage: number) => {
+    setPage(newPage);
+  };
+
   return (
-    <DataTable
-      datas={datas.data}
-      page={page}
-      nextPage={() => setPage(page + 1)}
-      prevPage={() => setPage(page - 1)}
-    />
+    <>
+      <DataTable datas={datas.data} page={page} pageChange={handleChangePage} />
+    </>
   );
 };
