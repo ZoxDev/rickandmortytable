@@ -4,11 +4,10 @@ import { DataCharacter } from '../types';
 type DataTableProps = {
   datas: DataCharacter;
   page: number;
-  nextPage: () => void;
-  prevPage: () => void;
+  pageChange: (newPage: number) => void;
 };
 
-export const DataTable = ({ datas, page, nextPage, prevPage }: DataTableProps) => {
+export const DataTable = ({ datas, page, pageChange }: DataTableProps) => {
   return (
     <>
       <Table>
@@ -24,7 +23,7 @@ export const DataTable = ({ datas, page, nextPage, prevPage }: DataTableProps) =
           {datas.results.map((row) => (
             <TableRow key={row.id}>
               <TableCell>
-                <img src={row.image}></img>
+                <img style={{ width: '100px' }} src={row.image}></img>
               </TableCell>
               <TableCell style={{ fontWeight: 'bold' }}>{row.name}</TableCell>
               <TableCell>{row.species}</TableCell>
@@ -40,8 +39,7 @@ export const DataTable = ({ datas, page, nextPage, prevPage }: DataTableProps) =
         count={datas.info.count}
         rowsPerPage={datas.results.length}
         page={page}
-        onPageChange={nextPage}
-        onRowsPerPageChange={prevPage}
+        onPageChange={pageChange}
       />
     </>
   );
