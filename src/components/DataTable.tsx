@@ -4,7 +4,7 @@ import { DataCharacter } from '../types';
 type DataTableProps = {
   datas: DataCharacter;
   page: number;
-  pageChange: (newPage: number) => void;
+  pageChange: (event: unknown, newPage: number) => void;
 };
 
 export const DataTable = ({ datas, page, pageChange }: DataTableProps) => {

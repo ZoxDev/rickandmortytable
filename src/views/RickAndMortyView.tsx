@@ -8,7 +8,7 @@ export const RickAndMortyView = () => {
 
   if (datas.data === undefined) return <h1>Fetching datas...</h1>;
 
-  const handleChangePage = (newPage: number) => {
+  const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
   };
 
