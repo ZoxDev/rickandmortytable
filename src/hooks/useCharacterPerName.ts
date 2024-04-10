@@ -5,7 +5,7 @@ export const useCharacterPerName = (name: string, page?: number) => {
   return useQuery({
     queryKey: ['characterPerName', name, page],
     queryFn: async () => {
-      const data: Array<DataCharacter> = await fetch(
+      const data: DataCharacter = await fetch(
         `https://rickandmortyapi.com/api/character/?page=${page}&name=${name}`,
       ).then((res) => res.json());
 
