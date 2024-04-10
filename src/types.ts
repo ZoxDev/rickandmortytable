@@ -13,8 +13,18 @@ export type Character = {
     name: string;
     url: URL;
   };
-  image: URL;
+  image: string;
   episode: [URL];
   url: URL;
   created: Date;
+};
+
+export type DataCharacter = {
+  info: {
+    count: number;
+    pages: number;
+    next: URL;
+    prev: URL;
+  };
+  results: [Character];
 };
