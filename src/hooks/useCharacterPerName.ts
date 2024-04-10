@@ -1,15 +1,5 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { Character } from '../types';
-
-export type DataCharacter = {
-  info: {
-    count: number;
-    pages: number;
-    next: URL;
-    prev: URL;
-  };
-  results: [Character];
-};
+import { DataCharacter } from '../types';
 
 export const useCharacterPerName = (name: string, page?: number) => {
   return useQuery({
