@@ -8,6 +8,9 @@ type DataTableProps = {
 };
 
 export const DataTable = ({ datas, page, pageChange }: DataTableProps) => {
+  
+  if (datas.results === undefined) return;
+
   return (
     <>
       <Table>
