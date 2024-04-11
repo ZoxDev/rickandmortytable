@@ -11,10 +11,6 @@ export const RickAndMortyView = () => {
   if (characters.isPending) return <h1>Loading...</h1>;
   if (characters.error) return <h1>An error as occured :(</h1>;
 
-  const handleChangePage = (_event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
-
   return (
     <main className="flex flex-col p-10">
       <TextField
@@ -23,7 +19,11 @@ export const RickAndMortyView = () => {
         label="Character name"
         id="outlined-size-small"
       />
-      <DataTable datas={characters.data} page={page} pageChange={handleChangePage} />
+      <DataTable
+        datas={characters.data}
+        page={page}
+        pageChange={(_event, newPage) => setPage(newPage)}
+      />
     </main>
   );
 };
