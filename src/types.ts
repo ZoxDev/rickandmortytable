@@ -14,7 +14,7 @@ export type Character = {
     url: URL;
   };
   image: string;
-  episode: [URL];
+  episode: URL[];
   url: URL;
   created: Date;
 };
@@ -26,5 +26,5 @@ export type DataCharacter = {
     next: URL;
     prev: URL;
   };
-  results: [Character];
+  results: Character[];
 };
