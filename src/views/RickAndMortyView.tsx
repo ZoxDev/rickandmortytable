@@ -1,25 +1,17 @@
 import { useState } from 'react';
-import { useCharacterPerPages } from '../hooks/useCharacterPerPages';
+import { useCharacter } from '../hooks/useCharacter';
 import { DataTable } from '../components/DataTable';
 import { TextField } from '@mui/material';
-import { useCharacterPerName } from '../hooks/useCharacterPerName';
-import { useSetDatas } from '../hooks/useSetDatas';
 
 export const RickAndMortyView = () => {
   const [page, setPage] = useState(1);
-  const allCharacter = useCharacterPerPages(page);
-
   const [characterName, setCharactername] = useState('');
-  const searchedCharacter = useCharacterPerName(characterName, page);
+  const characters = useCharacter(page, characterName);
 
-  const datas = useSetDatas(characterName, allCharacter?.data, searchedCharacter?.data);
+  if (characters.isPending) return <h1>Loading...</h1>;
+  if (characters.error) return <h1>An error as occured :(</h1>;
 
-  if (allCharacter.data === undefined || searchedCharacter.data === undefined)
-    return <h1>Fetching datas...</h1>;
-
-  if (datas === undefined) return <h1>Fetching datas...</h1>;
-
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
   };
 
@@ -31,7 +23,7 @@ export const RickAndMortyView = () => {
         label="Character name"
         id="outlined-size-small"
       />
-      <DataTable datas={datas} page={page} pageChange={handleChangePage} />
+      <DataTable datas={characters.data} page={page} pageChange={handleChangePage} />
     </main>
   );
 };
